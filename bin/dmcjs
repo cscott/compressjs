@@ -1,0 +1,127 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var dmcjs = require('../');
+var fs = require('fs');
+
+program
+    .version(dmcjs.version)
+    .usage('-d|-z [infile] [outfile]')
+    .option('-d, --decompress',
+            'Decompress stdin to stdout')
+    .option('-z, --compress',
+            'Compress stdin to stdout')
+    .option('-1', 'Fastest/largest compression')
+    .option('-2')
+    .option('-3')
+    .option('-4')
+    .option('-5')
+    .option('-6')
+    .option('-7')
+    .option('-8')
+    .option('-9', 'Slowest/smallest compression');
+program.on('--help', function() {
+    console.log('  If <infile> is omitted, reads from stdin.');
+    console.log('  If <outfile> is omitted, writes to stdout.');
+});
+program.parse(process.argv);
+
+if (!program.decompress) { program.compress = true; }
+
+if (program.decompress && program.compress) {
+    console.error('Must specify either -d or -z.');
+    return;
+}
+
+var level = undefined;
+for (var l=1; l<=9; l++) {
+    if (program[''+l]) {
+        if (level) {
+            console.error("Can't specify both -"+level+" and -"+l);
+            return;
+        }
+        level = l;
+    }
+}
+if (level && program.decompress) {
+    console.error('Compression level has no effect when decompressing.');
+    return;
+}
+
+var makeInStream = function(in_fd) {
+    var stat = fs.fstatSync(in_fd);
+    var stream = {
+        buffer: new Buffer(4096),
+        pos: 0,
+        end: 0,
+        _fillBuffer: function() {
+            this.end = fs.readSync(in_fd, this.buffer, 0, this.buffer.length);
+            this.pos = 0;
+        },
+        readByte: function() {
+            if (this.pos >= this.end) { this._fillBuffer(); }
+            if (this.pos < this.end) {
+                return this.buffer[this.pos++];
+            }
+            return -1;
+        },
+        read: function(buffer, bufOffset, length) {
+            if (this.pos >= this.end) { this._fillBuffer(); }
+            var bytesRead = 0;
+            while (bytesRead < length && this.pos < this.end) {
+                buffer[bufOffset++] = this.buffer[this.pos++];
+                bytesRead++;
+            }
+            return bytesRead;
+        }
+    };
+    if (stat.size) {
+        stream.size = stat.size;
+    }
+    return stream;
+};
+
+var makeOutStream = function(out_fd) {
+    return {
+        buffer: new Buffer(4096),
+        pos: 0,
+        flush: function() {
+            fs.writeSync(out_fd, this.buffer, 0, this.pos);
+            this.pos = 0;
+        },
+        writeByte: function(byte) {
+            if (this.pos >= this.buffer.length) { this.flush(); }
+            this.buffer[this.pos++] = byte;
+        }
+    };
+};
+
+var in_fd = 0, close_in = function(){};
+var out_fd = 1, close_out = function(){};
+if (program.args.length > 0) {
+    in_fd = fs.openSync(program.args.shift(), 'r');
+    close_in = function() { fs.closeSync(in_fd); };
+}
+if (program.args.length > 0) {
+    out_fd = fs.openSync(program.args.shift(), 'w');
+    close_out = function() { fs.closeSync(out_fd); };
+}
+
+var inStream = makeInStream(in_fd);
+var outStream= makeOutStream(out_fd);
+
+if (program.decompress) {
+    dmcjs.decompressFile(inStream, outStream);
+    outStream.flush();
+    close_in();
+    close_out();
+    return 0;
+}
+if (program.compress) {
+    dmcjs.compressFile(inStream, outStream, level);
+    outStream.flush();
+    close_in();
+    close_out();
+    return 0;
+}
+return 1;

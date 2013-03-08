@@ -1,0 +1,31 @@
+{
+  "name": "dmcjs",
+  "version": "0.0.1",
+  "author": "C. Scott Ananian",
+  "description": "pure JavaScript DMC de/compression, for node.js, volo, and the browser.",
+  "keywords": ["dmc", "compression", "decompression"],
+  "main": "main",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cscott/dmcjs.git"
+  },
+  "license": "GPL",
+  "bin": {
+    "dmcjs": "./bin/dmcjs"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "amdefine": "~0.0.4",
+    "commander": "~1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "amd": {},
+  "volo": {}
+}
