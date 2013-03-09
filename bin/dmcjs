@@ -110,15 +110,17 @@ if (program.args.length > 0) {
 var inStream = makeInStream(in_fd);
 var outStream= makeOutStream(out_fd);
 
+var cmp = dmcjs.Simple;
+
 if (program.decompress) {
-    dmcjs.decompressFile(inStream, outStream);
+    cmp.decompressFile(inStream, outStream);
     outStream.flush();
     close_in();
     close_out();
     return 0;
 }
 if (program.compress) {
-    dmcjs.compressFile(inStream, outStream, level);
+    cmp.compressFile(inStream, outStream, level);
     outStream.flush();
     close_in();
     close_out();
