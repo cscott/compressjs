@@ -1,7 +1,8 @@
 # dmcjs
 
-`dmcjs` is a fast pure JavaScript implementation of Dynamic Markov Chain
-compression/decompression.  It is written by C. Scott Ananian.
+`dmcjs` is a fast pure JavaScript implementation of
+[Dynamic Markov Compression](http://en.wikipedia.org/wiki/Dynamic_Markov_Compression) and decompression.
+`dmcjs` is written by C. Scott Ananian.
 The Range Coder used is a port of Michael Schindler's C range coder,
 found at http://www.compressconsult.com/rangecoder.
 
@@ -87,10 +88,11 @@ value will be a `Uint8Array`.
 If you provide the second argument, it must be a "stream", implementing
 the `writeByte` method.
 
-## Related projects
+## Related articles and projects
 
-* wikipedia article XXX
-* range coder source XXX
+* http://en.wikipedia.org/wiki/Dynamic_Markov_Compression Wikipedia article on DMC
+* http://www.cs.uvic.ca/~nigelh/Publications/DMC.pdf Original DMC paper
+* http://www.compressconsult.com/rangecoder/ Range Coder implementation in C
 
 ## Other JavaScript compressors
 
