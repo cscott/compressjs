@@ -47,6 +47,7 @@ if (level && program.decompress) {
     console.error('Compression level has no effect when decompressing.');
     return;
 }
+if (!level) { level=7; /* default */ }
 
 var makeInStream = function(in_fd) {
     var stat = fs.fstatSync(in_fd);
@@ -111,6 +112,7 @@ var inStream = makeInStream(in_fd);
 var outStream= makeOutStream(out_fd);
 
 var cmp = dmcjs.Simple;
+if (level > 1) { cmp = dmcjs.Lzjb; }
 
 if (program.decompress) {
     cmp.decompressFile(inStream, outStream);
