@@ -18,7 +18,8 @@ var testRoundTrip = function(cmp, level, filename) {
 ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 [{name:"simple", cmp:dmcjs.Simple, levels:[null]},
  {name:"lzjb-style", cmp:dmcjs.Lzjb, levels:[9]},
- {name:"huffman", cmp:dmcjs.Huffman, levels:[null]}].forEach(function(compressor) {
+ {name:"huffman", cmp:dmcjs.Huffman, levels:[null]},
+ {name:"lzp3(ish)", cmp:dmcjs.Lzp3, levels:[null]}].forEach(function(compressor) {
      describe(compressor.name+" round-trip encode/decode", function() {
          compressor.levels.forEach(function(level) {
              var desc = (level===null) ? 'default' : ('-'+level);
