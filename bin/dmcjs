@@ -11,6 +11,7 @@ program
             'Decompress stdin to stdout')
     .option('-z, --compress',
             'Compress stdin to stdout')
+    .option('-t <compressor>', 'Select compressor type')
     .option('-1', 'Fastest/largest compression')
     .option('-2')
     .option('-3')
@@ -114,8 +115,22 @@ if (program.args.length > 0) {
 var inStream = makeInStream(in_fd);
 var outStream= makeOutStream(out_fd);
 
-var cmp = dmcjs.Simple;
-if (level > 1) { cmp = dmcjs.Lzjb; }
+var cmp = dmcjs.Dmc;
+if (program.T) {
+    switch (program.T.toLowerCase()) {
+    case 'simple':  cmp = dmcjs.Simple; break;
+    case 'lzjb':    cmp = dmcjs.Lzjb; break;
+    case 'huff':    /* fall through */
+    case 'huffman': cmp = dmcjs.Huffman; break;
+    case 'lzp3':    cmp = dmcjs.Lzp3; break;
+    case 'esc':     cmp = dmcjs.EscModel; break;
+    case 'defsum':  cmp = dmcjs.DefSumModel; break;
+    case 'dmc':     cmp = dmcjs.Dmc; break;
+    default:
+        console.error('Unknown compressor:', program.T);
+        return 1;
+    }
+}
 
 if (program.decompress) {
     cmp.decompressFile(inStream, outStream);
