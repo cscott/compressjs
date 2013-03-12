@@ -21,7 +21,8 @@ ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
  {name:"defsummodel",cmp:dmcjs.DefSumModel, levels:[null]},
  {name:"escmodel",cmp:dmcjs.EscModel, levels:[null]},
  {name:"lzjb-style", cmp:dmcjs.Lzjb, levels:[9]},
- {name:"lzp3(ish)", cmp:dmcjs.Lzp3, levels:[null]}].forEach(function(compressor) {
+ {name:"lzp3(ish)", cmp:dmcjs.Lzp3, levels:[null]},
+ {name:"dmc", cmp:dmcjs.Dmc, levels:[null]}].forEach(function(compressor) {
      describe(compressor.name+" round-trip encode/decode", function() {
          compressor.levels.forEach(function(level) {
              var desc = (level===null) ? 'default' : ('-'+level);
