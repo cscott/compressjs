@@ -18,8 +18,9 @@ var testRoundTrip = function(cmp, level, filename) {
 ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 [{name:"simple", cmp:dmcjs.Simple, levels:[null]},
  {name:"huffman", cmp:dmcjs.Huffman, levels:[null]},
- {name:"defsummodel",cmp:dmcjs.DefSumModel, levels:[null]},
- {name:"mtfmodel",cmp:dmcjs.MTFModel, levels:[null]},
+ {name:"deferred-summation model",cmp:dmcjs.DefSumModel, levels:[null]},
+ {name:"mtf model",cmp:dmcjs.MTFModel, levels:[null]},
+ {name:"no model", cmp:dmcjs.NoModel, levels:[null]},
  {name:"lzjb-style", cmp:dmcjs.Lzjb, levels:[9]},
  {name:"lzp3(ish)", cmp:dmcjs.Lzp3, levels:[null]},
  {name:"dmc", cmp:dmcjs.Dmc, levels:[null]}].forEach(function(compressor) {

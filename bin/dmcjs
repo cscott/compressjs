@@ -118,14 +118,17 @@ var outStream= makeOutStream(out_fd);
 var cmp = dmcjs.Dmc;
 if (program.T) {
     switch (program.T.toLowerCase()) {
-    case 'simple':  cmp = dmcjs.Simple; break;
-    case 'lzjb':    cmp = dmcjs.Lzjb; break;
+    // models and coders
+    case 'defsum':  cmp = dmcjs.DefSumModel; break;
+    case 'mtf':     cmp = dmcjs.MTFModel; break;
+    case 'no':      cmp = dmcjs.NoModel; break;
     case 'huff':    /* fall through */
     case 'huffman': cmp = dmcjs.Huffman; break;
-    case 'lzp3':    cmp = dmcjs.Lzp3; break;
-    case 'mtf':     cmp = dmcjs.MTFModel; break;
-    case 'defsum':  cmp = dmcjs.DefSumModel; break;
+    // compression methods
     case 'dmc':     cmp = dmcjs.Dmc; break;
+    case 'lzjb':    cmp = dmcjs.Lzjb; break;
+    case 'lzp3':    cmp = dmcjs.Lzp3; break;
+    case 'simple':  cmp = dmcjs.Simple; break;
     default:
         console.error('Unknown compressor:', program.T);
         return 1;
