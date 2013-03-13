@@ -123,7 +123,7 @@ if (program.T) {
     case 'huff':    /* fall through */
     case 'huffman': cmp = dmcjs.Huffman; break;
     case 'lzp3':    cmp = dmcjs.Lzp3; break;
-    case 'esc':     cmp = dmcjs.EscModel; break;
+    case 'mtf':     cmp = dmcjs.MTFModel; break;
     case 'defsum':  cmp = dmcjs.DefSumModel; break;
     case 'dmc':     cmp = dmcjs.Dmc; break;
     default:
