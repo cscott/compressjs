@@ -19,6 +19,7 @@ ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 [{name:"simple", cmp:dmcjs.Simple, levels:[null]},
  {name:"huffman", cmp:dmcjs.Huffman, levels:[null]},
  {name:"deferred-summation model",cmp:dmcjs.DefSumModel, levels:[null]},
+ {name:"fenwick model",cmp:dmcjs.FenwickModel, levels:[null]},
  {name:"mtf model",cmp:dmcjs.MTFModel, levels:[null]},
  {name:"no model", cmp:dmcjs.NoModel, levels:[null]},
  {name:"lzjb-style", cmp:dmcjs.Lzjb, levels:[9]},

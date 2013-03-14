@@ -120,6 +120,7 @@ if (program.T) {
     switch (program.T.toLowerCase()) {
     // models and coders
     case 'defsum':  cmp = dmcjs.DefSumModel; break;
+    case 'fenwick': cmp = dmcjs.FenwickModel; break;
     case 'mtf':     cmp = dmcjs.MTFModel; break;
     case 'no':      cmp = dmcjs.NoModel; break;
     case 'huff':    /* fall through */
