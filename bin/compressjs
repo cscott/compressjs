@@ -122,6 +122,7 @@ if (program.T) {
     case 'defsum':  cmp = compressjs.DefSumModel; break;
     case 'fenwick': cmp = compressjs.FenwickModel; break;
     case 'mtf':     cmp = compressjs.MTFModel; break;
+    case 'context1':cmp = compressjs.Context1Model; break;
     case 'no':      cmp = compressjs.NoModel; break;
     case 'huff':    /* fall through */
     case 'huffman': cmp = compressjs.Huffman; break;

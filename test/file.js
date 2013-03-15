@@ -21,6 +21,7 @@ ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
  {name:"deferred-summation model",cmp:compressjs.DefSumModel, levels:[null]},
  {name:"fenwick model",cmp:compressjs.FenwickModel, levels:[null]},
  {name:"mtf model",cmp:compressjs.MTFModel, levels:[null]},
+ {name:"context-1 model",cmp:compressjs.Context1Model, levels:[null]},
  {name:"no model", cmp:compressjs.NoModel, levels:[null]},
  {name:"lzjb-style", cmp:compressjs.Lzjb, levels:[9]},
  {name:"lzp3(ish)", cmp:compressjs.Lzp3, levels:[null]},
