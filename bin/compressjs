@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var dmcjs = require('../');
+var compressjs = require('../');
 var fs = require('fs');
 
 program
-    .version(dmcjs.version)
+    .version(compressjs.version)
     .usage('-d|-z [infile] [outfile]')
     .option('-d, --decompress',
             'Decompress stdin to stdout')
@@ -115,21 +115,21 @@ if (program.args.length > 0) {
 var inStream = makeInStream(in_fd);
 var outStream= makeOutStream(out_fd);
 
-var cmp = dmcjs.Dmc;
+var cmp = compressjs.Lzp3;
 if (program.T) {
     switch (program.T.toLowerCase()) {
     // models and coders
-    case 'defsum':  cmp = dmcjs.DefSumModel; break;
-    case 'fenwick': cmp = dmcjs.FenwickModel; break;
-    case 'mtf':     cmp = dmcjs.MTFModel; break;
-    case 'no':      cmp = dmcjs.NoModel; break;
+    case 'defsum':  cmp = compressjs.DefSumModel; break;
+    case 'fenwick': cmp = compressjs.FenwickModel; break;
+    case 'mtf':     cmp = compressjs.MTFModel; break;
+    case 'no':      cmp = compressjs.NoModel; break;
     case 'huff':    /* fall through */
-    case 'huffman': cmp = dmcjs.Huffman; break;
+    case 'huffman': cmp = compressjs.Huffman; break;
     // compression methods
-    case 'dmc':     cmp = dmcjs.Dmc; break;
-    case 'lzjb':    cmp = dmcjs.Lzjb; break;
-    case 'lzp3':    cmp = dmcjs.Lzp3; break;
-    case 'simple':  cmp = dmcjs.Simple; break;
+    case 'dmc':     cmp = compressjs.Dmc; break;
+    case 'lzjb':    cmp = compressjs.Lzjb; break;
+    case 'lzp3':    cmp = compressjs.Lzp3; break;
+    case 'simple':  cmp = compressjs.Simple; break;
     default:
         console.error('Unknown compressor:', program.T);
         return 1;

@@ -1,5 +1,5 @@
 var assert = require("assert");
-var dmcjs = require('../');
+var compressjs = require('../');
 var fs = require('fs');
 
 var testRoundTrip = function(cmp, level, filename) {
@@ -16,15 +16,15 @@ var testRoundTrip = function(cmp, level, filename) {
 
 // test round-trip encode/decode for all compression variants
 ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-[{name:"simple", cmp:dmcjs.Simple, levels:[null]},
- {name:"huffman", cmp:dmcjs.Huffman, levels:[null]},
- {name:"deferred-summation model",cmp:dmcjs.DefSumModel, levels:[null]},
- {name:"fenwick model",cmp:dmcjs.FenwickModel, levels:[null]},
- {name:"mtf model",cmp:dmcjs.MTFModel, levels:[null]},
- {name:"no model", cmp:dmcjs.NoModel, levels:[null]},
- {name:"lzjb-style", cmp:dmcjs.Lzjb, levels:[9]},
- {name:"lzp3(ish)", cmp:dmcjs.Lzp3, levels:[null]},
- {name:"dmc", cmp:dmcjs.Dmc, levels:[null]}].forEach(function(compressor) {
+[{name:"simple", cmp:compressjs.Simple, levels:[null]},
+ {name:"huffman", cmp:compressjs.Huffman, levels:[null]},
+ {name:"deferred-summation model",cmp:compressjs.DefSumModel, levels:[null]},
+ {name:"fenwick model",cmp:compressjs.FenwickModel, levels:[null]},
+ {name:"mtf model",cmp:compressjs.MTFModel, levels:[null]},
+ {name:"no model", cmp:compressjs.NoModel, levels:[null]},
+ {name:"lzjb-style", cmp:compressjs.Lzjb, levels:[9]},
+ {name:"lzp3(ish)", cmp:compressjs.Lzp3, levels:[null]},
+ {name:"dmc", cmp:compressjs.Dmc, levels:[null]}].forEach(function(compressor) {
      describe(compressor.name+" round-trip encode/decode", function() {
          compressor.levels.forEach(function(level) {
              var desc = (level===null) ? 'default' : ('-'+level);

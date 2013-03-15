@@ -1,6 +1,6 @@
 /* Range Coder tests */
 var assert = require("assert");
-var dmcjs = require('../');
+var compressjs = require('../');
 var makeBuffer = require('../lib/makeBuffer');
 
 describe('basic range coder operation', function() {
@@ -14,7 +14,7 @@ describe('basic range coder operation', function() {
         readByte: function() { return buffer[this.pos++]; }
     };
 
-    var encoder = new dmcjs.RangeCoder(outStream);
+    var encoder = new compressjs.RangeCoder(outStream);
     encoder.encodeStart(0xCA, 0);
     // encode a two bits: 0 1
     encoder.encodeFreq(1, 0, 2);
@@ -33,7 +33,7 @@ describe('basic range coder operation', function() {
     //console.log(new Buffer(buffer).slice(0,outStream.pos).toString('hex'));
 
     // now let's verify we can get all that stuff out again.
-    var decoder = new dmcjs.RangeCoder(inStream);
+    var decoder = new compressjs.RangeCoder(inStream);
     it('should have the right header byte', function() {
         var header = decoder.decodeStart();
         assert.equal(header, 0xCA);
@@ -83,7 +83,7 @@ describe('verify range coder clean up', function() {
                 readByte: function() { return buffer[this.pos++]; }
             };
 
-            var encoder = new dmcjs.RangeCoder(outStream);
+            var encoder = new compressjs.RangeCoder(outStream);
             encoder.encodeStart(bits, 0);
             // encode a series of alternating 2/3-bits.
             //  --> # bits = 2 * (1 - ((this freq) / (total freq)))
@@ -101,7 +101,7 @@ describe('verify range coder clean up', function() {
             //            toString('hex'));
 
             // now let's verify we can get all that stuff out again.
-            var decoder = new dmcjs.RangeCoder(inStream);
+            var decoder = new compressjs.RangeCoder(inStream);
             var header = decoder.decodeStart();
             assert.equal(header, bits);
             for (i=0; i<bits; i++) {
