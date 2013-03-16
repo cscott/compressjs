@@ -130,6 +130,7 @@ if (program.T) {
     case 'dmc':     cmp = compressjs.Dmc; break;
     case 'lzjb':    cmp = compressjs.Lzjb; break;
     case 'lzp3':    cmp = compressjs.Lzp3; break;
+    case 'ppm':     cmp = compressjs.PPM; break;
     case 'simple':  cmp = compressjs.Simple; break;
     default:
         console.error('Unknown compressor:', program.T);

@@ -1,9 +1,8 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
-define(['./lib/freeze','./lib/Context1Model','./lib/DefSumModel','./lib/FenwickModel','./lib/MTFModel','./lib/NoModel','./lib/Huffman','./lib/Dmc','./lib/Lzjb','./lib/Lzp3','./lib/RangeCoder','./lib/Simple'], function(freeze,Context1Model,DefSumModel,FenwickModel,MTFModel,NoModel,Huffman,Dmc,Lzjb,Lzp3,RangeCoder,Simple) {
+define(['./lib/freeze','./lib/Context1Model','./lib/DefSumModel','./lib/FenwickModel','./lib/MTFModel','./lib/NoModel','./lib/Huffman','./lib/RangeCoder','./lib/Dmc','./lib/Lzjb','./lib/Lzp3','./lib/PPM','./lib/Simple'], function(freeze,Context1Model,DefSumModel,FenwickModel,MTFModel,NoModel,Huffman,RangeCoder,Dmc,Lzjb,Lzp3,PPM,Simple) {
     'use strict';
     return freeze({
         version: "0.0.1",
-        RangeCoder: RangeCoder,
         // models and coder
         Context1Model: Context1Model,
         DefSumModel: DefSumModel,
@@ -11,10 +10,12 @@ define(['./lib/freeze','./lib/Context1Model','./lib/DefSumModel','./lib/FenwickM
         MTFModel: MTFModel,
         NoModel: NoModel,
         Huffman: Huffman,
+        RangeCoder: RangeCoder,
         // compression methods
         Dmc: Dmc,
         Lzjb: Lzjb,
         Lzp3: Lzp3,
+        PPM: PPM,
         Simple: Simple
     });
 });
