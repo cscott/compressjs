@@ -75,6 +75,10 @@ var makeInStream = function(in_fd) {
                 bytesRead++;
             }
             return bytesRead;
+        },
+        eof: function() {
+            if (this.pos >= this.end) { this._fillBuffer(); }
+            return (this.pos >= this.end);
         }
     };
     stream.buffer.fill(0);
