@@ -51,55 +51,53 @@ if (level && program.decompress) {
 if (!level) { level=7; /* default */ }
 
 var makeInStream = function(in_fd) {
+    var stream = new compressjs.Stream();
     var stat = fs.fstatSync(in_fd);
-    var stream = {
-        buffer: new Buffer(4096),
-        pos: 0,
-        end: 0,
-        _fillBuffer: function() {
-            this.end = fs.readSync(in_fd, this.buffer, 0, this.buffer.length);
-            this.pos = 0;
-        },
-        readByte: function() {
-            if (this.pos >= this.end) { this._fillBuffer(); }
-            if (this.pos < this.end) {
-                return this.buffer[this.pos++];
-            }
-            return -1;
-        },
-        read: function(buffer, bufOffset, length) {
-            if (this.pos >= this.end) { this._fillBuffer(); }
-            var bytesRead = 0;
-            while (bytesRead < length && this.pos < this.end) {
-                buffer[bufOffset++] = this.buffer[this.pos++];
-                bytesRead++;
-            }
-            return bytesRead;
-        },
-        eof: function() {
-            if (this.pos >= this.end) { this._fillBuffer(); }
-            return (this.pos >= this.end);
-        }
-    };
-    stream.buffer.fill(0);
     if (stat.size) {
         stream.size = stat.size;
     }
+    stream.buffer = new Buffer(4096);
+    stream.pos = 0;
+    stream.end = 0;
+    stream._fillBuffer = function() {
+        this.end = fs.readSync(in_fd, this.buffer, 0, this.buffer.length);
+        this.pos = 0;
+    };
+    stream.readByte = function() {
+        if (this.pos >= this.end) { this._fillBuffer(); }
+        if (this.pos < this.end) {
+            return this.buffer[this.pos++];
+        }
+        return -1;
+    };
+    stream.read = function(buffer, bufOffset, length) {
+        if (this.pos >= this.end) { this._fillBuffer(); }
+        var bytesRead = 0;
+        while (bytesRead < length && this.pos < this.end) {
+            buffer[bufOffset++] = this.buffer[this.pos++];
+            bytesRead++;
+        }
+        return bytesRead;
+    };
+    stream.eof = function() {
+        if (this.pos >= this.end) { this._fillBuffer(); }
+        return (this.pos >= this.end);
+    };
+    stream.buffer.fill(0);
     return stream;
 };
 
 var makeOutStream = function(out_fd) {
-    var stream = {
-        buffer: new Buffer(4096),
-        pos: 0,
-        flush: function() {
-            fs.writeSync(out_fd, this.buffer, 0, this.pos);
-            this.pos = 0;
-        },
-        writeByte: function(byte) {
-            if (this.pos >= this.buffer.length) { this.flush(); }
-            this.buffer[this.pos++] = byte;
-        }
+    var stream = new compressjs.Stream();
+    stream.buffer = new Buffer(4096);
+    stream.pos = 0;
+    stream.flush = function() {
+        fs.writeSync(out_fd, this.buffer, 0, this.pos);
+        this.pos = 0;
+    };
+    stream.writeByte = function(_byte) {
+        if (this.pos >= this.buffer.length) { this.flush(); }
+        this.buffer[this.pos++] = _byte;
     };
     stream.buffer.fill(0);
     return stream;
