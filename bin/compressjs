@@ -129,6 +129,7 @@ if (program.T) {
     case 'huff':    /* fall through */
     case 'huffman': cmp = compressjs.Huffman; break;
     // compression methods
+    case 'bwtc':    cmp = compressjs.BWTC; break;
     case 'bzip':    /* fall through */
     case 'bzip2':   cmp = compressjs.Bzip2; break;
     case 'dmc':     cmp = compressjs.Dmc; break;

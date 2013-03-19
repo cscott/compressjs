@@ -26,7 +26,8 @@ ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
  {name:"lzjb-style", cmp:compressjs.Lzjb, levels:[9]},
  {name:"lzp3(ish)", cmp:compressjs.Lzp3, levels:[null]},
  {name:"dmc", cmp:compressjs.Dmc, levels:[null]},
- {name:"ppm", cmp:compressjs.PPM, levels:[null]}].forEach(function(compressor) {
+ {name:"ppm", cmp:compressjs.PPM, levels:[null]},
+ {name:"bwtc", cmp:compressjs.BWTC, levels:ALL_LEVELS}].forEach(function(compressor) {
      describe(compressor.name+" round-trip encode/decode", function() {
          compressor.levels.forEach(function(level) {
              var desc = (level===null) ? 'default' : ('-'+level);
