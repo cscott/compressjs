@@ -24,7 +24,7 @@
     "mocha": "~1.8.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -R spec"
   },
   "amd": {},
   "volo": {}
