@@ -11,6 +11,8 @@ program
             'Decompress stdin to stdout')
     .option('-z, --compress',
             'Compress stdin to stdout')
+    .option('-b, --block <n>',
+            'Extract a single block, starting at <n> bits.', -1)
     .option('-t <compressor>', 'Select compressor type')
     .option('-1', 'Fastest/largest compression')
     .option('-2')
@@ -31,7 +33,12 @@ if (!program.decompress) { program.compress = true; }
 
 if (program.decompress && program.compress) {
     console.error('Must specify either -d or -z.');
-    return;
+    return 1;
+}
+
+if (program.compress && (+program.block) >= 0) {
+    console.error('--block can only be used with decompression');
+    return 1;
 }
 
 var level = undefined;
@@ -57,11 +64,16 @@ var makeInStream = function(in_fd) {
         stream.size = stat.size;
     }
     stream.buffer = new Buffer(4096);
+    stream.filePos = null;
     stream.pos = 0;
     stream.end = 0;
     stream._fillBuffer = function() {
-        this.end = fs.readSync(in_fd, this.buffer, 0, this.buffer.length);
+        this.end = fs.readSync(in_fd, this.buffer, 0, this.buffer.length,
+                               this.filePos);
         this.pos = 0;
+        if (this.filePos !== null && this.end > 0) {
+            this.filePos += this.end;
+        }
     };
     stream.readByte = function() {
         if (this.pos >= this.end) { this._fillBuffer(); }
@@ -78,6 +90,10 @@ var makeInStream = function(in_fd) {
             bytesRead++;
         }
         return bytesRead;
+    };
+    stream.seek = function(seek_pos) {
+        this.filePos = seek_pos;
+        this.pos = this.end = 0;
     };
     stream.eof = function() {
         if (this.pos >= this.end) { this._fillBuffer(); }
@@ -144,7 +160,11 @@ if (program.T) {
 }
 
 if (program.decompress) {
-    cmp.decompressFile(inStream, outStream);
+    if (program.block >= 0) {
+      cmp.decompressBlock(inStream, program.block, outStream);
+    } else {
+      cmp.decompressFile(inStream, outStream);
+    }
     outStream.flush();
     close_in();
     close_out();
