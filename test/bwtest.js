@@ -6,19 +6,6 @@ var assert = require('assert');
 var fs = require('fs');
 var BWT = require('../').BWT;
 
-var unbwt = function(T, U, LF, n, pidx) {
-    var C = [];
-    var i, t;
-    for (i=0; i<256; i++) { C[i] = 0; }
-    for (i=0; i<n; i++) { LF[i] = C[T[i]]++; }
-    for (i=0, t=0; i<256; i++) { t += C[i]; C[i] = t - C[i]; }
-    for (i=n-1, t=0; i>=0; i--) {
-        t = LF[t] + C[U[i]=T[t]];
-        t += (t<pidx) ? 1 : 0;
-    }
-    C = null;
-};
-
 var testFile = function(filename, verbose) {
     var T = fs.readFileSync('test/'+filename+'.ref');
     var n = T.length, i;
@@ -37,7 +24,7 @@ var testFile = function(filename, verbose) {
     if (verbose) { console.log((finish - start)/1000, 'seconds'); }
 
     if (verbose) { console.log('unbwtcheck...'); }
-    unbwt(U, V, A, n, pidx);
+    BWT.unbwt(U, V, A, n, pidx);
     for (i=0; i<n; i++) {
         assert.ok(T[i] === V[i],
                   'mismatch at', i,': ',T[i],'!=',V[i]);
