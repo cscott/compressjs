@@ -1,12 +1,26 @@
 # compressjs
 
 `compressjs` contains fast pure-JavaScript implementations of various
-de/compression algorithms, including Charles Bloom's "LZP3", a modified
-"LZJB", and an implementation of
+de/compression algorithms, including `bzip2`, Charles Bloom's
+[LZP3](http://www.cbloom.com/papers/lzp.pdf),
+a modified
+[LZJB](http://en.wikipedia.org/wiki/LZJB),
+`PPM-D`, and an implementation of
 [Dynamic Markov Compression](http://en.wikipedia.org/wiki/Dynamic_Markov_Compression).
 `compressjs` is written by C. Scott Ananian.
-The Range Coder used is a JavaScript port of Michael Schindler's C range coder,
-found at http://www.compressconsult.com/rangecoder.
+The Range Coder used is a JavaScript port of
+[Michael Schindler's C range coder](http://www.compressconsult.com/rangecoder).
+Bits also also borrowed from Yuta Mori's
+[SAIS implementation](https://sites.google.com/site/yuta256/sais);
+[Eli Skeggs](https://github.com/skeggse/node-bzip),
+[Kevin Kwok](https://github.com/antimatter15/bzip2.js),
+[Rob Landley](http://www.landley.net/code/bunzip-4.1.c),
+[James Taylor](https://bitbucket.org/james_taylor/seek-bzip2/),
+and [Matthew Francis](https://code.google.com/p/jbzip2)
+for Bzip2 compression and decompression code.
+"Bear" wrote the [original JavaScript LZJB](https://code.google.com/p/jslzjb/);
+the version here is based on the
+[node lzjb module](https://github.com/cscott/lzjb).
 
 ## How to install
 
@@ -143,7 +157,7 @@ you created the model.
 
 * https://github.com/cscott/lzjb LZJB
 * https://github.com/cscott/lzma-purejs LZMA
-* https://github.com/cscott/seek-bzip Bzip2 (random-access decompression)
+* https://github.com/cscott/seek-bzip random-access bzip2 decompression
 
 ## License (GPLv2)
 
