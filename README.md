@@ -36,8 +36,10 @@ they should be valid for inter-algorithm comparisons.
 <tr><td>bwtc    </td><td>1</td><td> 333166</td><td> 6.95</td><td> 0.96</td></tr>
 <tr><td>bzip2   </td><td>1</td><td> 341615</td><td>12.42</td><td> 0.79</td></tr>
 <tr><td>dmc     </td><td>-</td><td> 435835</td><td> 4.03</td><td> 5.33</td></tr>
-<tr><td>lzjb    </td><td>9</td><td> 568178</td><td> 1.58</td><td> 1.55</td></tr>
-<tr><td>lzjb    </td><td>1</td><td> 607039</td><td> 1.70</td><td> 1.87</td></tr>
+<tr><td>lzjbr   </td><td>9</td><td> 491476</td><td> 1.85</td><td> 1.08</td></tr>
+<tr><td>lzjbr   </td><td>1</td><td> 523780</td><td> 1.63</td><td> 1.14</td></tr>
+<tr><td>lzjb    </td><td>9</td><td> 706210</td><td> 0.60</td><td> 0.18</td></tr>
+<tr><td>lzjb    </td><td>1</td><td> 758467</td><td> 0.36</td><td> 0.18</td></tr>
 <tr><td>context1</td><td>-</td><td> 939098</td><td> 2.88</td><td> 2.51</td></tr>
 <tr><td>huffman </td><td>-</td><td>1452055</td><td> 4.13</td><td> 3.56</td></tr>
 <tr><td>mtf     </td><td>-</td><td>1470526</td><td> 1.00</td><td> 2.09</td></tr>
