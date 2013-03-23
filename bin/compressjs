@@ -149,6 +149,7 @@ if (program.T) {
     case 'bzip':    /* fall through */
     case 'bzip2':   cmp = compressjs.Bzip2; break;
     case 'dmc':     cmp = compressjs.Dmc; break;
+    case 'lzjb':    cmp = compressjs.Lzjb; break;
     case 'lzjbr':   cmp = compressjs.LzjbR; break;
     case 'lzp3':    cmp = compressjs.Lzp3; break;
     case 'ppm':     cmp = compressjs.PPM; break;
