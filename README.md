@@ -48,6 +48,51 @@ they should be valid for inter-algorithm comparisons.
 <tr><td>-       </td><td>-</td><td>2130640</td><td>-    </td><td>-    </td></tr>
 </table>
 
+### Algorithm descriptions
+* `compressjs.Bzip2` (`-t bzip2`) is the bzip2 algorithm we all have
+  come to know and love.  It has a block size between 100k and 900k.
+* `compressjs.BWTC` (`-t bwtc`) is substantially the same, but with a
+  few simplifications/improvements which make it faster, smaller, and
+  not binary-compatible.  In particular, the unnecessary initial RLE step
+  of bzip2 is omitted, and we use a range coder with an adaptive
+  context-0 model after the MTF/RLE2 step, instead of the static
+  huffman codes of bzip2.
+* `compressjs.PPM` (`-t ppm`) is a naive/simple implementation of the
+  [PPMD](http://en.wikipedia.org/wiki/Prediction_by_partial_matching)
+  algorithm with a 256k sliding window.
+* `compressjs.Lzp3` (`-t lzp3`) is an algorithm similar to Charles
+  Bloom's [LZP3](http://www.cbloom.com/papers/lzp.pdf) algorithm.
+  It uses a 64k sliding window, a context-4 model, and a range coder.
+* `compressjs.Dmc` (`-t dmc`) is a partial implementation of [Dynamic
+  Markov Compression](http://en.wikipedia.org/wiki/Dynamic_Markov_compression).
+  Unlike most DMC implementations, our implementation is bytewise (not
+  bitwise).  There is currently no provision for shrinking the Markov
+  model (or throwing it out when it grows too large), so be careful
+  with large inputs!  I may return to twiddle with this some more; see
+  the source for details.
+* `compressjs.Lzjb` (`-t lzjb`) is a straight copy of the fast
+  [LZJB](http://en.wikipedia.org/wiki/LZJB) algorithm from
+  <https://github.com/cscott/lzjb>.
+* `compressjs.LzjbR` (`-t lzjbr`) is a hacked version of LZJB which
+  uses a range coder and a bit of modeling instead of the fixed
+  9-bit literal / 17-bit match format of the original.
+
+The remaining algorithms are self-tests for various bits of
+compression code, not real compressors. `Context1Model` is a simple
+adaptive context-1 model using a range coder.  `Huffman` is an
+adaptive Huffman coder using
+[Vitter's algorithm](http://en.wikipedia.org/wiki/Adaptive_Huffman_coding#Vitter_algorithm).
+`MTFModel`, `FenwickModel`, and `DefSumModel` are simple adaptive
+context-0 models with escapes, implementing using a move-to-front
+list, a [Fenwick tree](http://en.wikipedia.org/wiki/Fenwick_tree), and
+Charles Bloom's
+[deferred summation algorithm](http://cbloom.com/papers/context.pdf),
+respectively.  `Simple` is a static context-0 model for the range
+coder.  `NoModel` encodes the input bits directly; it shows the
+basic I/O overhead, as well as the few bytes of overhead due to the
+[file magic](http://en.wikipedia.org/wiki/Magic_number_(programming)#Magic_numbers_in_files)
+and a variable-length encoding of the uncompressed size of the file.
+
 ## How to install
 
 ```
