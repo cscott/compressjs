@@ -23,7 +23,7 @@ ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
  {name:"mtf model",cmp:compressjs.MTFModel, levels:[null]},
  {name:"context-1 model",cmp:compressjs.Context1Model, levels:[null]},
  {name:"no model", cmp:compressjs.NoModel, levels:[null]},
- {name:"lzjb-style", cmp:compressjs.Lzjb, levels:[9]},
+ {name:"lzjb-rangecoder", cmp:compressjs.LzjbR, levels:[9]},
  {name:"lzp3(ish)", cmp:compressjs.Lzp3, levels:[null]},
  {name:"dmc", cmp:compressjs.Dmc, levels:[null]},
  {name:"ppm", cmp:compressjs.PPM, levels:[null]},
