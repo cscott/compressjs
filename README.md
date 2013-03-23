@@ -72,7 +72,7 @@ var data2 = new Buffer(uncompressed).toString('utf8');
 console.log(data2);
 ```
 There is a streaming interface as well.  Use `Uint8Array` or normal
-javascript arrays when running in a browser.
+JavaScript arrays when running in a browser.
 
 See the tests in the `tests/` directory for further usage examples.
 
