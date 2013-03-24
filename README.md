@@ -31,8 +31,8 @@ they should be valid for inter-algorithm comparisons.
 <tr><th>Type</th><th>Level</th><th>Size (bytes)</th><th>Compress time (s)</th><th>Decompress time (s)</th></tr>
 <tr><td>bwtc    </td><td>9</td><td> 272997</td><td> 7.47</td><td> 1.04</td></tr>
 <tr><td>bzip2   </td><td>9</td><td> 275087</td><td>12.87</td><td> 0.71</td></tr>
+<tr><td>lzp3    </td><td>-</td><td> 292978</td><td> 1.06</td><td> 1.00</td></tr>
 <tr><td>ppm     </td><td>-</td><td> 297220</td><td>24.24</td><td>24.94</td></tr>
-<tr><td>lzp3    </td><td>-</td><td> 320302</td><td> 1.06</td><td> 1.00</td></tr>
 <tr><td>bwtc    </td><td>1</td><td> 333166</td><td> 6.95</td><td> 0.96</td></tr>
 <tr><td>bzip2   </td><td>1</td><td> 341615</td><td>12.42</td><td> 0.79</td></tr>
 <tr><td>dmc     </td><td>-</td><td> 435835</td><td> 4.03</td><td> 5.33</td></tr>
@@ -64,7 +64,7 @@ they should be valid for inter-algorithm comparisons.
   algorithm with a 256k sliding window.
 * `compressjs.Lzp3` (`-t lzp3`) is an algorithm similar to Charles
   Bloom's [LZP3](http://www.cbloom.com/papers/lzp.pdf) algorithm.
-  It uses a 64k sliding window, a context-4 model, and a range coder.
+  It uses a 1M sliding window, a context-4 model, and a range coder.
 * `compressjs.Dmc` (`-t dmc`) is a partial implementation of [Dynamic
   Markov Compression](http://en.wikipedia.org/wiki/Dynamic_Markov_compression).
   Unlike most DMC implementations, our implementation is bytewise (not
