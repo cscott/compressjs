@@ -27,28 +27,27 @@ Here are some representative speeds and sizes, on the `test/sample5.ref` input
 included in this repository.  Times are with node 0.8.22 on my laptop, but
 they should be valid for inter-algorithm comparisons.
 
-<table>
-<tr><th>Type</th><th>Level</th><th>Size (bytes)</th><th>Compress time (s)</th><th>Decompress time (s)</th></tr>
-<tr><td>bwtc    </td><td>9</td><td> 272997</td><td> 7.47</td><td> 1.04</td></tr>
-<tr><td>bzip2   </td><td>9</td><td> 275087</td><td>12.87</td><td> 0.71</td></tr>
-<tr><td>lzp3    </td><td>-</td><td> 292978</td><td> 1.06</td><td> 1.00</td></tr>
-<tr><td>ppm     </td><td>-</td><td> 297220</td><td>24.24</td><td>24.94</td></tr>
-<tr><td>bwtc    </td><td>1</td><td> 333166</td><td> 6.95</td><td> 0.96</td></tr>
-<tr><td>bzip2   </td><td>1</td><td> 341615</td><td>12.42</td><td> 0.79</td></tr>
-<tr><td>dmc     </td><td>-</td><td> 435835</td><td> 4.03</td><td> 5.33</td></tr>
-<tr><td>lzjbr   </td><td>9</td><td> 491476</td><td> 1.85</td><td> 1.08</td></tr>
-<tr><td>lzjbr   </td><td>1</td><td> 523780</td><td> 1.63</td><td> 1.14</td></tr>
-<tr><td>lzjb    </td><td>9</td><td> 706210</td><td> 0.60</td><td> 0.18</td></tr>
-<tr><td>lzjb    </td><td>1</td><td> 758467</td><td> 0.36</td><td> 0.18</td></tr>
-<tr><td>context1</td><td>-</td><td> 939098</td><td> 2.88</td><td> 2.51</td></tr>
-<tr><td>huffman </td><td>-</td><td>1452055</td><td> 4.13</td><td> 3.56</td></tr>
-<tr><td>mtf     </td><td>-</td><td>1470526</td><td> 1.00</td><td> 2.09</td></tr>
-<tr><td>fenwick </td><td>-</td><td>1470719</td><td> 1.60</td><td> 1.92</td></tr>
-<tr><td>simple  </td><td>-</td><td>1479143</td><td> 0.39</td><td> 1.34</td></tr>
-<tr><td>defsum  </td><td>-</td><td>1491107</td><td> 1.68</td><td> 0.81</td></tr>
-<tr><td>no      </td><td>-</td><td>2130648</td><td> 0.44</td><td> 0.49</td></tr>
-<tr><td>-       </td><td>-</td><td>2130640</td><td>-    </td><td>-    </td></tr>
-</table>
+|Type|Level|Size (bytes)|Compress time (s)|Decompress time (s)|
+|----|:---:|-----------:|----------------:|------------------:|
+|bwtc    |9| 272997| 7.47| 1.04|
+|bzip2   |9| 275087|12.87| 0.71|
+|lzp3    |-| 292978| 1.06| 1.00|
+|ppm     |-| 297220|24.24|24.94|
+|bwtc    |1| 333166| 6.95| 0.96|
+|bzip2   |1| 341615|12.42| 0.79|
+|dmc     |-| 435835| 4.03| 5.33|
+|lzjbr   |9| 491476| 1.85| 1.08|
+|lzjbr   |1| 523780| 1.63| 1.14|
+|lzjb    |9| 706210| 0.60| 0.18|
+|lzjb    |1| 758467| 0.36| 0.18|
+|context1|-| 939098| 2.88| 2.51|
+|huffman |-|1452055| 4.13| 3.56|
+|mtf     |-|1470526| 1.00| 2.09|
+|fenwick |-|1470719| 1.60| 1.92|
+|simple  |-|1479143| 0.39| 1.34|
+|defsum  |-|1491107| 1.68| 0.81|
+|no      |-|2130648| 0.44| 0.49|
+|-       |-|2130640|-    |-    |
 
 ### Algorithm descriptions
 * `compressjs.Bzip2` (`-t bzip2`) is the bzip2 algorithm we all have
