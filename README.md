@@ -124,7 +124,7 @@ Charles Bloom's
 respectively.  `Simple` is a static context-0 model for the range
 coder.  `NoModel` encodes the input bits directly; it shows the
 basic I/O overhead, as well as the few bytes of overhead due to the
-[file magic](http://en.wikipedia.org/wiki/Magic_number_(programming)#Magic_numbers_in_files)
+[file magic](http://en.wikipedia.org/wiki/Magic_number_%28programming%29#Magic_numbers_in_files)
 and a variable-length encoding of the uncompressed size of the file.
 
 ## How to install
