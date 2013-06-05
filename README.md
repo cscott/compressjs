@@ -1,5 +1,7 @@
 # compressjs
 
+[![Build Status](https://travis-ci.org/cscott/compressjs.png)](https://travis-ci.org/cscott/compressjs)
+
 `compressjs` contains fast pure-JavaScript implementations of various
 de/compression algorithms, including `bzip2`, Charles Bloom's
 [LZP3](http://www.cbloom.com/papers/lzp.pdf),
