@@ -116,8 +116,7 @@ It can be downloaded [from that site](http://mattmahoney.net/dc/textdata.html).
 The remaining algorithms are self-tests for various bits of
 compression code, not real compressors. `Context1Model` is a simple
 adaptive context-1 model using a range coder.  `Huffman` is an
-adaptive Huffman coder using
-[Vitter's algorithm](http://en.wikipedia.org/wiki/Adaptive_Huffman_coding#Vitter_algorithm).
+adaptive Huffman coder using [Vitter's algorithm][].
 `MTFModel`, `FenwickModel`, and `DefSumModel` are simple adaptive
 context-0 models with escapes, implementing using a move-to-front
 list, a [Fenwick tree](http://en.wikipedia.org/wiki/Fenwick_tree), and
@@ -126,8 +125,11 @@ Charles Bloom's
 respectively.  `Simple` is a static context-0 model for the range
 coder.  `NoModel` encodes the input bits directly; it shows the
 basic I/O overhead, as well as the few bytes of overhead due to the
-[file magic](http://en.wikipedia.org/wiki/Magic_number_(programming)#Magic_numbers_in_files)
-and a variable-length encoding of the uncompressed size of the file.
+[file magic][] and a variable-length encoding of the uncompressed size
+of the file.
+
+[Vitter's algorithm]: http://en.wikipedia.org/wiki/Adaptive_Huffman_coding#Vitter_algorithm
+[file magic]:         http://en.wikipedia.org/wiki/Magic_number_(programming)#Magic_numbers_in_files
 
 ## How to install
 
