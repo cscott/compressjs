@@ -1,6 +1,6 @@
 # compressjs
 
-[![Build Status](https://travis-ci.org/cscott/compressjs.png)](https://travis-ci.org/cscott/compressjs)
+[![Build Status][1]][2] [![dependency status][3]][4] [![dev dependency status][5]][6]
 
 `compressjs` contains fast pure-JavaScript implementations of various
 de/compression algorithms, including `bzip2`, Charles Bloom's
@@ -282,3 +282,10 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see http://www.gnu.org/licenses/.
+
+[1]: https://travis-ci.org/cscott/compressjs.png
+[2]: https://travis-ci.org/cscott/compressjs
+[3]: https://david-dm.org/cscott/compressjs.png
+[4]: https://david-dm.org/cscott/compressjs
+[5]: https://david-dm.org/cscott/compressjs/dev-status.png
+[6]: https://david-dm.org/cscott/compressjs#info=devDependencies
