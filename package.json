@@ -17,7 +17,7 @@
     "test": "test"
   },
   "dependencies": {
-    "amdefine": "~0.0.4",
+    "amdefine": "~0.1.0",
     "commander": "~2.0.0"
   },
   "devDependencies": {
