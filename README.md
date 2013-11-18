@@ -129,7 +129,7 @@ basic I/O overhead, as well as the few bytes of overhead due to the
 of the file.
 
 [Vitter's algorithm]: http://en.wikipedia.org/wiki/Adaptive_Huffman_coding#Vitter_algorithm
-[file magic]:         http://en.wikipedia.org/wiki/Magic_number_(programming)#Magic_numbers_in_files
+[file magic]:         http://en.wikipedia.org/wiki/Magic_number_%28programming%29#Magic_numbers_in_files
 
 ## How to install
 
