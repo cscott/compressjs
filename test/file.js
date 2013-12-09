@@ -15,7 +15,7 @@ var testRoundTrip = function(cmp, level, filename) {
 };
 
 // test round-trip encode/decode for all compression variants
-ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+ALL_LEVELS=[null, 1, /*2, 3, 4, 5, 6, 7, 8,*/ 9];
 [{name:"simple", cmp:compressjs.Simple, levels:[null]},
  {name:"huffman", cmp:compressjs.Huffman, levels:[null]},
  {name:"deferred-summation model",cmp:compressjs.DefSumModel, levels:[null]},
