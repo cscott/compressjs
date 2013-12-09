@@ -3,7 +3,11 @@
   "version": "1.0.1-git",
   "author": "C. Scott Ananian",
   "description": "pure JavaScript de/compression (bzip2, etc) for node.js, volo, and the browser.",
-  "keywords": ["bzip2", "compression", "decompression"],
+  "keywords": [
+    "bzip2",
+    "compression",
+    "decompression"
+  ],
   "main": "main",
   "repository": {
     "type": "git",
@@ -18,10 +22,10 @@
   },
   "dependencies": {
     "amdefine": "~0.1.0",
-    "commander": "~2.0.0"
+    "commander": "~2.1.0"
   },
   "devDependencies": {
-    "mocha": "~1.13.0"
+    "mocha": "~1.15.1"
   },
   "scripts": {
     "test": "mocha"
