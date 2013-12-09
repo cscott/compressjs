@@ -1,4 +1,5 @@
 # compressjs
+[![NPM][NPM1]][NPM2]
 
 [![Build Status][1]][2] [![dependency status][3]][4] [![dev dependency status][5]][6]
 
@@ -282,6 +283,9 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see http://www.gnu.org/licenses/.
+
+[NPM1]: https://nodei.co/npm/compressjs.png
+[NPM2]: https://nodei.co/npm/compressjs/
 
 [1]: https://travis-ci.org/cscott/compressjs.png
 [2]: https://travis-ci.org/cscott/compressjs
