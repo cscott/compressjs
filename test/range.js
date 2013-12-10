@@ -1,10 +1,10 @@
 /* Range Coder tests */
 var assert = require("assert");
 var compressjs = require('../');
-var makeBuffer = require('../lib/makeBuffer');
+var Util = require('../lib/Util');
 
 describe('basic range coder operation', function() {
-    var buffer = makeBuffer(8);
+    var buffer = Util.makeU8Buffer(8);
     var outStream = {
         pos: 0,
         writeByte: function(b) { buffer[this.pos++] = b; }
@@ -73,7 +73,7 @@ describe('verify range coder clean up', function() {
     }
     bits.forEach(function(bits) {
         it('should cleanly consume '+bits+' bits', function() {
-            var buffer = makeBuffer(16);
+            var buffer = Util.makeU8Buffer(16);
             var outStream = {
                 pos: 0,
                 writeByte: function(b) { buffer[this.pos++] = b; }

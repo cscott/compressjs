@@ -5,6 +5,7 @@
 var assert = require('assert');
 var fs = require('fs');
 var BWT = require('../').BWT;
+var Util = require('../lib/Util');
 
 var sufcheck = function(T, SA, n, verbose) {
     var C = [];
@@ -87,12 +88,12 @@ var testFile = function(filename, verbose) {
     if (verbose) { console.log('File', filename+'.ref', n, 'bytes....'); }
 
     /** Allocate 5n bytes of memory */
-    T = new Uint8Array(T);
-    var SA = new Int32Array(n);
+    T = Util.arraycopy(Util.makeU8Buffer(n), T);
+    var SA = Util.makeS32Buffer(n);
 
     /** Construct the suffix array */
     var start = Date.now();
-    BWT.suffixsort(T, SA, n);
+    BWT.suffixsort(T, SA, n, 256);
     var finish = Date.now();
     if (verbose) { console.log((finish - start)/1000, 'seconds'); }
 

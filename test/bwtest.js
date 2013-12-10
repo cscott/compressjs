@@ -5,6 +5,7 @@
 var assert = require('assert');
 var fs = require('fs');
 var BWT = require('../').BWT;
+var Util = require('../lib/Util');
 
 var testFile = function(filename, verbose) {
     var T = fs.readFileSync('test/'+filename+'.ref');
@@ -12,14 +13,14 @@ var testFile = function(filename, verbose) {
     if (verbose) { console.log('File', filename+'.ref', n, 'bytes....'); }
 
     /** Allocate 5n bytes of memory */
-    T = new Uint8Array(T);
-    var U = new Uint8Array(n);
-    var V = new Uint8Array(n);
-    var A = new Int32Array(n);
+    T = Util.arraycopy(Util.makeU8Buffer(n), T);
+    var U = Util.makeU8Buffer(n);
+    var V = Util.makeU8Buffer(n);
+    var A = Util.makeS32Buffer(n);
 
     /** Construct the BWT */
     var start = Date.now();
-    var pidx = BWT.bwtransform(T, U, A, n);
+    var pidx = BWT.bwtransform(T, U, A, n, 256);
     var finish = Date.now();
     if (verbose) { console.log((finish - start)/1000, 'seconds'); }
 
