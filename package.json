@@ -1,6 +1,6 @@
 {
   "name": "compressjs",
-  "version": "1.0.1-git",
+  "version": "1.0.2",
   "author": "C. Scott Ananian",
   "description": "pure JavaScript de/compression (bzip2, etc) for node.js, volo, and the browser.",
   "keywords": [
