@@ -91,6 +91,7 @@ describe('BWT transform', function() {
 
     ['sample0', 'sample1', 'sample2', 'sample3', 'sample4', 'sample5'].forEach(function(f) {
         it('should correctly round-trip '+f, function() {
+            this.timeout(0); // no timeout -- these can take a while.
             testFile(f, false);
         });
     });

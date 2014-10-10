@@ -36,6 +36,7 @@ ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
              describe("compression level "+desc, function() {
                  ['sample0', 'sample1', 'sample2', 'sample3', 'sample4','sample5'].forEach(function(f) {
                      it('should correctly round-trip '+f, function() {
+                         this.timeout(0); // no timeout -- can take a while.
                          testRoundTrip(compressor.cmp, level, f);
                      });
                  });
