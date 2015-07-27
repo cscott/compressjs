@@ -21,11 +21,11 @@
     "test": "test"
   },
   "dependencies": {
-    "amdefine": "~0.1.0",
-    "commander": "~2.3.0"
+    "amdefine": "~1.0.0",
+    "commander": "~2.8.1"
   },
   "devDependencies": {
-    "mocha": "~1.21.4"
+    "mocha": "~2.2.5"
   },
   "scripts": {
     "test": "mocha"
