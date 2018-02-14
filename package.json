@@ -25,9 +25,12 @@
     "commander": "~2.8.1"
   },
   "devDependencies": {
-    "mocha": "~2.2.5"
+    "amdclean": "^2.7.0",
+    "mocha": "~2.2.5",
+    "requirejs": "^2.3.5"
   },
   "scripts": {
+    "build": "r.js -o build.js",
     "test": "mocha"
   },
   "amd": {},
