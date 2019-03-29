@@ -28,7 +28,7 @@ the version here is based on the
 ## Compression benchmarks
 Here are some representative speeds and sizes for the various algorithms
 implemented in this package.  Times are with node 0.8.22 on my laptop, but
-they should be valid for inter-algorithm comparisons.
+they should be valid for inter-algorithm comparisons. You can see [travis-ci build log](https://travis-ci.org/cscott/compressjs) for latest benchmarks.
 
 ### test/sample5.ref
 This is the [Taoism](http://simple.wikipedia.org/wiki/Taoism) article from
@@ -113,6 +113,7 @@ It can be downloaded [from that site](http://mattmahoney.net/dc/textdata.html).
 * `compressjs.LzjbR` (`-t lzjbr`) is a hacked version of LZJB which
   uses a range coder and a bit of modeling instead of the fixed
   9-bit literal / 17-bit match format of the original.
+* `compressjs.Arithmetic` (`-t ari`) is an encapsulation of [https://github.com/upupming/arithmetic-coding](https://github.com/upupming/arithmetic-coding).
 
 The remaining algorithms are self-tests for various bits of
 compression code, not real compressors. `Context1Model` is a simple
@@ -174,16 +175,18 @@ the various compression algorithms available.  Use `--help` to see
 the various options.
 
 From JavaScript:
-```
+
+```js
 var compressjs = require('compressjs');
 var algorithm = compressjs.Lzp3;
-var data = new Buffer('Example data', 'utf8');
+var data = Buffer.from('Example data', 'utf8');
 var compressed = algorithm.compressFile(data);
 var decompressed = algorithm.decompressFile(compressed);
 // convert from array back to string
-var data2 = new Buffer(decompressed).toString('utf8');
+var data2 = Buffer.from(decompressed).toString('utf8');
 console.log(data2);
 ```
+
 There is a streaming interface as well.  Use `Uint8Array` or normal
 JavaScript arrays when running in a browser.
 

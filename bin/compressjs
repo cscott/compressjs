@@ -154,6 +154,7 @@ if (program.T) {
     case 'lzp3':    cmp = compressjs.Lzp3; break;
     case 'ppm':     cmp = compressjs.PPM; break;
     case 'simple':  cmp = compressjs.Simple; break;
+    case 'ari': cmp = compressjs.Arithmetic; break;
     default:
         console.error('Unknown compressor:', program.T);
         return 1;
