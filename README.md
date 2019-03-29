@@ -134,11 +134,13 @@ of the file.
 
 ## How to install
 
-```
+```bash
 npm install compressjs
 ```
+
 or
-```
+
+```bash
 volo add cscott/compressjs
 ```
 
@@ -151,7 +153,7 @@ IE 10, Firefox 4, Chrome 7, or Safari 5.1.
 
 ## Testing
 
-```
+```bash
 npm install
 npm test
 ```
@@ -159,7 +161,8 @@ npm test
 ## Usage
 
 There is a binary available in bin:
-```
+
+```bash
 $ bin/compressjs --help
 $ echo "Test me" | bin/compressjs -t lzp3 -z > test.lzp3
 $ bin/compressjs -t lzp3 -d test.lzp3
