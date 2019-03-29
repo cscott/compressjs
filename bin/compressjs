@@ -63,7 +63,7 @@ var makeInStream = function(in_fd) {
     if (stat.size) {
         stream.size = stat.size;
     }
-    stream.buffer = new Buffer(4096);
+    stream.buffer = Buffer.alloc(4096);
     stream.filePos = null;
     stream.pos = 0;
     stream.end = 0;
@@ -105,7 +105,7 @@ var makeInStream = function(in_fd) {
 
 var makeOutStream = function(out_fd) {
     var stream = new compressjs.Stream();
-    stream.buffer = new Buffer(4096);
+    stream.buffer = Buffer.alloc(4096);
     stream.pos = 0;
     stream.flush = function() {
         fs.writeSync(out_fd, this.buffer, 0, this.pos);

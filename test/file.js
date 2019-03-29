@@ -6,11 +6,11 @@ var testRoundTrip = function(cmp, level, filename) {
     var referenceData = fs.readFileSync('test/'+filename+'.ref');
     var data = cmp.compressFile(referenceData, null, level);
     // convert to buffer
-    data = new Buffer(data);
+    data = Buffer.from(data);
     // round trip
     var data2 = cmp.decompressFile(data);
     // convert to buffer
-    data2 = new Buffer(data2);
+    data2 = Buffer.from(data2);
     assert.ok(referenceData.toString('hex') === data2.toString('hex'));
 };
 
