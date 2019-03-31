@@ -6,11 +6,11 @@ var testRoundTrip = function(cmp, level, filename) {
     var referenceData = fs.readFileSync('test/'+filename+'.ref');
     var data = cmp.compressFile(referenceData, null, level);
     // convert to buffer
-    data = new Buffer(data);
+    data = Buffer.from(data);
     // round trip
     var data2 = cmp.decompressFile(data);
     // convert to buffer
-    data2 = new Buffer(data2);
+    data2 = Buffer.from(data2);
     assert.ok(referenceData.toString('hex') === data2.toString('hex'));
 };
 
@@ -29,7 +29,9 @@ ALL_LEVELS=[null, 1, 2, 3, 4, 5, 6, 7, 8, 9];
  {name:"dmc", cmp:compressjs.Dmc, levels:[null]},
  {name:"ppm", cmp:compressjs.PPM, levels:[null]},
  {name:"bwtc", cmp:compressjs.BWTC, levels:ALL_LEVELS},
- {name:"bzip2", cmp:compressjs.Bzip2, levels:ALL_LEVELS}].forEach(function(compressor) {
+ {name:"bzip2", cmp:compressjs.Bzip2, levels:ALL_LEVELS},
+ {name:"arithmetic", cmp:compressjs.Arithmetic, levels:[null]}
+].forEach(function(compressor) {
      describe(compressor.name+" round-trip encode/decode", function() {
          compressor.levels.forEach(function(level) {
              var desc = (level===null) ? 'default' : ('-'+level);

@@ -30,7 +30,7 @@ describe('basic range coder operation', function() {
     });
 
     // for debugging it's sometimes nice to see the output bytes
-    //console.log(new Buffer(buffer).slice(0,outStream.pos).toString('hex'));
+    //console.log(Buffer.from(buffer).slice(0,outStream.pos).toString('hex'));
 
     // now let's verify we can get all that stuff out again.
     var decoder = new compressjs.RangeCoder(inStream);
@@ -97,7 +97,7 @@ describe('verify range coder clean up', function() {
             assert.equal(size, outStream.pos);
 
             // for debugging it's sometimes nice to see the output bytes
-            //console.log(new Buffer(buffer).slice(0,outStream.pos).
+            //console.log(Buffer.from(buffer).slice(0,outStream.pos).
             //            toString('hex'));
 
             // now let's verify we can get all that stuff out again.

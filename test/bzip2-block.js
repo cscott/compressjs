@@ -6,7 +6,7 @@ describe('bzip2 block decode', function(){
   it('should correctly decode our example file', function(){
       var compressedData = fs.readFileSync('test/sample0.bz2');
       var data = Bzip2.decompressBlock(compressedData, 32);
-      data = new Buffer(data).toString('utf8');
+      data = Buffer.from(data).toString('utf8');
       assert.equal(data, "This is a test\n");
   });
   [{file:'sample2',blocks:[544888]},
@@ -20,7 +20,7 @@ describe('bzip2 block decode', function(){
             var data = Bzip2.decompressBlock(compressedData, b,
                                              referenceData.length);
             var encoding = (f=='sample2')?'hex':'utf-8';
-            assert.equal(new Buffer(data).toString(encoding),
+            assert.equal(Buffer.from(data).toString(encoding),
                          referenceData.toString(encoding));
           });
      });

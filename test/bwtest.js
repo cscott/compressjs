@@ -80,8 +80,8 @@ describe('BWT transform', function() {
 
     testcases.forEach(function(t) {
         it('should correctly sort '+t.description, function() {
-            var T = new Buffer(t.input, 'ascii');
-            var U = new Buffer(T.length);
+            var T = Buffer.from(t.input, 'ascii');
+            var U = Buffer.alloc(T.length);
             var pidx = BWT.bwtransform2(T, U, T.length, 256);
             var s2 = U.toString('ascii');
             assert.equal(s2, t.output);
