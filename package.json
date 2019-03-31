@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "amdefine": "^1.0.1",
-    "arithmetic-coding": "^1.2.0",
+    "arithmetic-coding": "*",
     "commander": "^2.19.0"
   },
   "devDependencies": {
